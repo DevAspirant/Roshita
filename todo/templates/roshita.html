@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-12">
+                <div class="card px-3">
+                    <div class="card-body text-right">
+                        <h2 class="card-title">قائمة الادوية الرئيسية</h2>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="add-items d-flex">
+                                <input type="text" name="title" class="form-control todo-list-input" placeholder="ما هي الادوية ؟">
+                                <button type="submit"
+                                    class="add btn btn-primary font-weight-bold todo-list-add-btn padding-box ">إضافة</button>
+                            </div>
+                        </form>
+
+
+                        <div class="list-wrapper">
+                            <ul class="d-flex flex-column-reverse todo-list">
+
+
+                                {% for roshita in roshita_list %}
+                                
+                                <li {% if todo.checked == True %} class="completed" {% endif %}>
+                                    <div class="form-check">
+                                        <form method="POST">
+                                         {% csrf_token %}   
+                                        <label class="form-check-label">
+                                            <input type="hidden" name="roshita_id" value="{{roshita.id}}">
+                                            <input class="checkbox">
+                                        </form>
+                                            {{ roshita.title }}
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+
+
+                                    <a style="margin-left: auto" href="{% url 'roshita:update_roshita' roshita.pk %}">
+                                        <i class="remove mdi2 mdi-close-circle-outline"></i>
+                                    </a>
+                                    <a style="margin-left: 2px" href="{% url 'roshita:roshtia_delete' roshita.pk %}">
+                                        <i class="remove mdi mdi-close-circle-outline"></i>
+                                    </a>
+                                </li>
+
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
