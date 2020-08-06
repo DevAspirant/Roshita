@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'todo',
     'roshita',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project.urls'
+
+# LOGIN - LOGOUT Rediret 
+
+LOGIN_REDIRECT_URL ='/roshita/roshita_list'
+LOGOUT_REDIRECT_URL ='/roshita/roshita_list'
 
 TEMPLATES = [
     {

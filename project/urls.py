@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('todo/', include(('todo.urls','home'),namespace='home')),
     path('roshita/',include(('roshita.urls','roshita'),namespace='roshita')),
+    path('accounts/',include('accounts.urls')),
 ]

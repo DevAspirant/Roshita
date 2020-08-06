@@ -4,7 +4,7 @@
   <head>
       <meta charset='utf-8'>
       <meta name='viewport' content='width=device-width, initial-scale=1'>
-      <title>Snippet - BBBootstrap</title>
+      <title>Roshita</title>
       <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
       <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
       <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
@@ -481,13 +481,25 @@ background-color: #f9f9fa
  .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile,
  .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item {
      display: flex !important
- }</style>
+ }
+ .btn-primary{
+     background-color: #04BFAD;
+     border-color: #04BFAD;
+
+ }
+ </style>
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
 
 
 </script></head>
 <body>
+    {% if user.is_authenticated %}
+        <p>hi {{user.username}}</p>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
 {% block body %}
 {% endblock %}
 </body>
